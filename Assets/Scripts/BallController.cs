@@ -46,6 +46,20 @@ public class BallController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Collided with: " +  collision.gameObject + ", Tag: " + collision.gameObject.tag);
 
+        if (collision.gameObject.CompareTag("PaddleLeft"))
+        {
+            Debug.Log("Ball has hit PaddleLeft");
+            ballRB.velocity = new Vector2(-1, ballRB.velocity.y);
+        }
+        else if (collision.gameObject.CompareTag("PaddleMiddle"))
+        {
+
+        }
+        else if (collision.gameObject.CompareTag("PaddleRight"))
+        {
+
+        }
     }
 }
