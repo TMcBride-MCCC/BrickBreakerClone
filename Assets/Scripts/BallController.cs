@@ -9,7 +9,7 @@ public class BallController : MonoBehaviour
     //Set moving to false to allow for start launch
     private bool ballMoving = false;
     //Set the starting launch force
-    private float launchForce = 20f;
+    private float launchForce = 10f;
     //Find the paddle
     public Transform paddle;
 
