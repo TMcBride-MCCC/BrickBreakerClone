@@ -48,18 +48,45 @@ public class BallController : MonoBehaviour
     {
         Debug.Log("Collided with: " +  collision.gameObject + ", Tag: " + collision.gameObject.tag);
 
-        if (collision.gameObject.CompareTag("PaddleLeft"))
+        //If ball collides with the Player parent object
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Ball has hit PaddleLeft");
-            ballRB.velocity = new Vector2(-1, ballRB.velocity.y);
-        }
-        else if (collision.gameObject.CompareTag("PaddleMiddle"))
-        {
+            //Register the hit
+            ContactPoint2D hitLocation = collision.GetContact(0);
+
+            //Register the hitLocation's collider
+            Collider2D hitLocationCollider = hitLocation.collider;
+
+            //If there is a collider on this location
+            if (hitLocationCollider != null)
+            {
+                //If the left side of the paddle is hit
+                if (hitLocationCollider.CompareTag("PaddleLeft"))
+                {
+                    Debug.Log("Ball his PaddleLeft");
+                }
+
+                //If the middle of the paddle is hit
+                if (hitLocationCollider.CompareTag("PaddleMiddle"))
+                {
+                    Debug.Log("Ball his PaddleMiddle");
+
+                }
+
+                //If the right side of the paddle is hit
+                if (hitLocationCollider.CompareTag("PaddleRight"))
+                {
+                    Debug.Log("Ball his PaddleRight");
+
+                }
+            }
+
+
+
+
+
 
         }
-        else if (collision.gameObject.CompareTag("PaddleRight"))
-        {
 
-        }
     }
 }
