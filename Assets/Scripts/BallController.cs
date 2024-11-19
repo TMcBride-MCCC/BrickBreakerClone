@@ -81,13 +81,6 @@ public class BallController : MonoBehaviour
                     ballRB.velocity = new Vector2(10, ballRB.velocity.y);
                 }
             }
-
-
-
-
-
-
         }
-
     }
 }
