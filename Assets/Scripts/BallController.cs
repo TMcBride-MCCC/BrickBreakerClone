@@ -82,5 +82,21 @@ public class BallController : MonoBehaviour
                 }
             }
         }
+        else if (collision.gameObject.CompareTag("Snowflake"))
+        {
+            //Ignore collision
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider);
+        }
+        else if (collision.gameObject.CompareTag("Mushroom1"))
+        {
+            //Ignore collision
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider);
+        }
+        else if (collision.gameObject.CompareTag("Mushroom2"))
+        {
+            //Ignore collision
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider);
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
     }
 }

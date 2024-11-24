@@ -12,6 +12,9 @@ TagManager:
   - RightWall
   - Ball
   - Ceiling
+  - Snowflake
+  - Mushroom1
+  - Mushroom2
   layers:
   - Default
   - TransparentFX

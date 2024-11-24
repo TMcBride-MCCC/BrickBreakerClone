@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         playerRB = GetComponent<Rigidbody2D>();
         Time.timeScale = 1f;
 
-        Debug.Log("Initial scale: " + transform.localScale);
+        //Debug.Log("Initial scale: " + transform.localScale);
     }
 
     // Update is called once per frame
@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
         return frozen;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Snowflake"))
         {
@@ -89,14 +89,20 @@ public class PlayerController : MonoBehaviour
             playerXScale += .5f;
             gameObject.transform.localScale = new Vector3(playerXScale, 1f, 1f);
 
-            Debug.Log("PlayerXScale after incrementing: " + playerXScale);
+            //Debugging
+            //When the mushroom drops from a certain height Unity detects three triggers
+            //But when falling from higher than that point Unity only detects one trigger
+            //Odd....
+            //Should not be a problem when dropping from my brick height
+            //Debug.Log("PlayerXScale after incrementing: " + playerXScale);
         }
         else if (collision.gameObject.CompareTag("Mushroom2"))
         {
             //Snowflake code here
             //Number of balls are multiplied by 3
             Destroy(collision.gameObject);
-        }
 
+
+        }
     }
 }
