@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed;
     private bool frozen;
     private float frozenTimer;
+    private float playerXScale;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
         //Reference to the player's rigidbody
         playerRB = GetComponent<Rigidbody2D>();
         Time.timeScale = 1f;
+
+        Debug.Log("Initial scale: " + transform.localScale);
     }
 
     // Update is called once per frame
@@ -82,7 +85,11 @@ public class PlayerController : MonoBehaviour
             //Mushroom1 code here
             //Player paddle size increase
             Destroy(collision.gameObject);
-            gameObject.transform.localScale = new Vector2(transform.localScale.x + 1, transform.localScale.y + 1);
+            playerXScale = transform.localScale.x;
+            playerXScale += .5f;
+            gameObject.transform.localScale = new Vector3(playerXScale, 1f, 1f);
+
+            Debug.Log("PlayerXScale after incrementing: " + playerXScale);
         }
         else if (collision.gameObject.CompareTag("Mushroom2"))
         {
