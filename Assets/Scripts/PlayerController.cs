@@ -5,13 +5,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D playerRB;
-    //Movement variables
-    //private float inputHorizontal;
     public Vector2 direction;
     public float movementSpeed;
     private bool frozen;
     private float frozenTimer;
     private float playerXScale;
+    //Create a reference to the ball
+    public GameObject ball;
+    //Create a place to put the ball prefab for spawning multi
+    public GameObject spawnedBall;
 
     // Start is called before the first frame update
     void Start()
@@ -33,9 +35,6 @@ public class PlayerController : MonoBehaviour
 
     private void playerDirection()
     {
-        //inputHorizontal = Input.GetAxisRaw("Horizontal");
-        //playerRB.velocity = new Vector2(movementSpeed * inputHorizontal, 0);
-
         if (Input.GetKey(KeyCode.A) || (Input.GetKey(KeyCode.LeftArrow)))
         {
             direction = Vector2.left;
@@ -85,24 +84,26 @@ public class PlayerController : MonoBehaviour
             //Mushroom1 code here
             //Player paddle size increase
             Destroy(collision.gameObject);
-            playerXScale = transform.localScale.x;
-            playerXScale += .5f;
-            gameObject.transform.localScale = new Vector3(playerXScale, 1f, 1f);
+            if (transform.localScale.x < 2f)
+            gameObject.transform.localScale = new Vector3(transform.localScale.x + 0.5f, 1f, 1f);
 
-            //Debugging
-            //When the mushroom drops from a certain height Unity detects three triggers
-            //But when falling from higher than that point Unity only detects one trigger
-            //Odd....
-            //Should not be a problem when dropping from my brick height
-            //Debug.Log("PlayerXScale after incrementing: " + playerXScale);
+            //Debug.Log("PlayerXScale after increase: " + playerXScale);
         }
         else if (collision.gameObject.CompareTag("Mushroom2"))
         {
-            //Snowflake code here
-            //Number of balls are multiplied by 3
+            //Mushroom2 code here
+            //Player paddle size decrease
             Destroy(collision.gameObject);
-
-
+            if (transform.localScale.x > 0.5f)
+            {
+                gameObject.transform.localScale = new Vector3(transform.localScale.x - 0.5f, 1f, 1f);
+            }
+            else
+            {
+                return;
+            }
+            //Debug.Log("Collided with: " + gameObject.name);
+            //Debug.Log("PlayerXScale after decrease: " + playerXScale);
         }
     }
 }

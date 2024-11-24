@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9201813567654168428}
   - component: {fileID: 6182010378623135658}
   - component: {fileID: 4410010330279816097}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Snowflake
   m_TagString: Snowflake
   m_Icon: {fileID: 0}
