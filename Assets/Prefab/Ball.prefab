@@ -161,4 +161,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f3666a871b53642b5162463de401be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  paddle: {fileID: 0}
+  paddle: {fileID: 6156758323198610923, guid: bad116e10cc75d8499ef31cfc029d225, type: 3}

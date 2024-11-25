@@ -15,6 +15,8 @@ public class BrickClass : MonoBehaviour
     public int points;
     private bool indestructable;
 
+    public GameObject[] items;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -85,8 +87,29 @@ public class BrickClass : MonoBehaviour
             {
                 //Destroy brick
                 Destroy(this.gameObject);
+                spawnItem();
                 FindObjectOfType<GameManager>().addToScore(1);
             }
+        }
+    }
+
+    private void spawnItem()
+    {
+        int randomItemSpawn = Random.Range(1, 7);
+
+        if (randomItemSpawn == 1)
+        {
+            Instantiate(items[0], transform.position, Quaternion.identity);
+        }
+        else if (randomItemSpawn == 2)
+        {
+            Instantiate(items[1], transform.position, Quaternion.identity);
+
+        }
+        else if(randomItemSpawn == 3)
+        {
+            Instantiate(items[2], transform.position, Quaternion.identity);
+
         }
     }
 }

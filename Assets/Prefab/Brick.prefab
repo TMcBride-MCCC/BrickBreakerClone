@@ -148,3 +148,8 @@ MonoBehaviour:
   yellowBrick: {fileID: 21300000, guid: a7d1f69ee08b3fa40b9bfbd425317ef1, type: 3}
   orangeBrick: {fileID: 21300000, guid: dcabec852936d80459f7bb0c1e2b37f3, type: 3}
   redBrick: {fileID: 21300000, guid: bffe368c553d3ee469d527a4c46ea5bd, type: 3}
+  points: 0
+  items:
+  - {fileID: 5038467743844895361, guid: 3ee9b951aa7cde543a1c4f6f80d6b0bf, type: 3}
+  - {fileID: 886203349772467393, guid: 196bf38c41069af4195a81a797911322, type: 3}
+  - {fileID: 551675746520429057, guid: 4d499ce490afe85498fecc6a3e25af64, type: 3}

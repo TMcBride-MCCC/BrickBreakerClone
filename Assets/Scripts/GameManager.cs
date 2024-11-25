@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
 
         int randomLevelNum = Random.Range(1, 3);
         LoadLevel(randomLevelNum);
+
+        updateGuiScore();
+        updateGuiLives();
     }
 
     public void Quit()
@@ -50,6 +53,8 @@ public class GameManager : MonoBehaviour
         findGuiLives();
         updateGuiScore();
         updateGuiLives();
+        showGuiLives();
+        showGuiScore();
     }
 
     private void findGuiScore()
@@ -113,6 +118,28 @@ public class GameManager : MonoBehaviour
 
     private void gameOver()
     {
-        SceneManager.LoadScene("GameOver");
+        hideGuiScore();
+        hideGuiLives();
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void hideGuiScore()
+    {
+        guiScoreText.enabled = false;
+    }
+
+    public void showGuiScore()
+    {
+        guiScoreText.enabled=true;
+    }
+
+    public void hideGuiLives()
+    {
+        guiLivesText.enabled=false;
+    }
+
+    public void showGuiLives()
+    {
+        guiLivesText.enabled = true;
     }
 }
