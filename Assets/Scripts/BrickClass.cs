@@ -12,6 +12,7 @@ public class BrickClass : MonoBehaviour
     public Sprite redBrick;
 
     private int health;
+    public int points;
     private bool indestructable;
 
     // Start is called before the first frame update
@@ -27,6 +28,7 @@ public class BrickClass : MonoBehaviour
             spriteRenderer.sprite = redBrick;
             //Health 1
             health = 1;
+            points = 1;
         }
         else if (randomBrickSpawn == 2)
         {
@@ -83,6 +85,7 @@ public class BrickClass : MonoBehaviour
             {
                 //Destroy brick
                 Destroy(this.gameObject);
+                FindObjectOfType<GameManager>().addToScore(1);
             }
         }
     }
