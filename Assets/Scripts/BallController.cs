@@ -84,8 +84,10 @@ public class BallController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Ground"))
         {
-            //Destroy the ball
-            Destroy(this.gameObject);
+            //"Destroy" the ball
+            ballRB.velocity = Vector2.zero;
+            transform.position = new Vector2(paddle.position.x, paddle.position.y + .25f);
+            ballMoving = false;
             //Call GameManager and send 1 for life deduction
             FindObjectOfType<GameManager>().subtractFromLives(1);
         }
