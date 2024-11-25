@@ -10,10 +10,9 @@ public class PlayerController : MonoBehaviour
     private bool frozen;
     private float frozenTimer;
     private float playerXScale;
-    //Create a reference to the ball
-    public GameObject ball;
-    //Create a place to put the ball prefab for spawning multi
-    public GameObject spawnedBall;
+
+    public int playerLives;
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +20,8 @@ public class PlayerController : MonoBehaviour
         //Reference to the player's rigidbody
         playerRB = GetComponent<Rigidbody2D>();
         Time.timeScale = 1f;
+
+        playerLives = 3;
 
         //Debug.Log("Initial scale: " + transform.localScale);
     }
