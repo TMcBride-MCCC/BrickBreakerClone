@@ -84,7 +84,10 @@ public class BallController : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Ground"))
         {
+            //Destroy the ball
             Destroy(this.gameObject);
+            //Call GameManager and send 1 for life deduction
+            FindObjectOfType<GameManager>().subtractFromLives(1);
         }
     }
 }

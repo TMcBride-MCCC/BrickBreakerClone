@@ -9,9 +9,9 @@ public class GameManager : MonoBehaviour
 {
     public GameObject gameOverMenu;
     public TMP_Text guiScoreText;
+    public TMP_Text guiLivesText;
     public int score = 0;
     public int lives = 3;
-    private bool gameOver;
 
     private void Awake()
     {
@@ -47,7 +47,9 @@ public class GameManager : MonoBehaviour
     private void onSceneLoaded()
     {
         findGuiScore();
+        findGuiLives();
         updateGuiScore();
+        updateGuiLives();
     }
 
     private void findGuiScore()
@@ -64,16 +66,53 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void findGuiLives()
+    {
+        GameObject livesText = GameObject.FindWithTag("LivesText");
+
+        if (livesText != null)
+        {
+            guiLivesText = livesText.GetComponent<TMP_Text>();
+        }
+        else
+        {
+            Debug.Log("ERROR: cannot find lives text");
+        }
+    }
+
     public void addToScore(int p)
     {
-        Debug.Log(p + " added to score!");
+        //Debug.Log(p + " added to score!");
         score += p;
-        Debug.Log("Score is now: " + score);
+        //Debug.Log("Score is now: " + score);
         updateGuiScore();
     }
 
     public void updateGuiScore()
     {
         guiScoreText.text = "Score: " + score.ToString();
+    }
+
+    public void subtractFromLives(int l)
+    {
+        Debug.Log("You had " + lives + " lives left.");
+        lives -= l;
+        Debug.Log("You now have " + lives + " left");
+        updateGuiLives();
+
+        if (lives == 0)
+        {
+            gameOver();
+        }
+    }
+
+    public void updateGuiLives()
+    {
+        guiLivesText.text = "Lives: " + lives.ToString();
+    }
+
+    private void gameOver()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 }
